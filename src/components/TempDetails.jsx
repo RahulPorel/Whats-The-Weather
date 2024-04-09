@@ -19,6 +19,7 @@ const TempDetails = ({
     icon,
     temp,
     temp_min,
+    temp_max,
     sunrise,
     sunset,
     speed,
@@ -30,7 +31,8 @@ const TempDetails = ({
   return (
     <div>
       <div className="flex items-center justify-center py-6 text-xl text-cyan-300">
-        <p>{details}</p>
+        <p> {details === "Clouds" ? "Cloudy" : details}&nbsp;Weather</p>
+        {console.log(details.toUpperCase())}
       </div>
 
       <div className="flex flex-row items-center justify-center text-white py-3 ">
@@ -77,17 +79,22 @@ const TempDetails = ({
         <UilSunset />
         <p className="font-light">
           SunSet:
-          <span className="font-medium ml-1">06:45am</span>
+          <span className="font-medium ml-1">
+            {" "}
+            {formatToLocalTime(sunset, timezone, "hh:mm a")}
+          </span>
         </p>
         <p className="font-light"></p>
         <UilSun />
         <p className="font-light">
-          High <span className="font-medium ml-1">45*c</span>
+          High:
+          <span className="font-medium ml-1">{`${temp_max.toFixed()} °c`}</span>
         </p>
         <p className="font-light"></p>
         <UilSun />
         <p className="font-light">
-          Low <span className="font-medium ml-1">40*c</span>
+          Low:
+          <span className="font-medium ml-1">{`${temp_min.toFixed()} °c`}</span>
         </p>
       </div>
     </div>

@@ -11,7 +11,7 @@ import getFormattedWeatherData from "./services/WeatherServices";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [query, setQuery] = useState({ q: "berlin" });
+  const [query, setQuery] = useState({ q: "surat" });
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
 
@@ -20,11 +20,10 @@ function App() {
       await getFormattedWeatherData({ ...query, units }).then((data) => {
         setWeather(data);
       });
-      // console.log(data);
     };
     fetchWeather();
   }, [query, units]);
-
+  console.log(weather);
   return (
     <>
       <PrimarySearchAppBar />
@@ -39,10 +38,10 @@ function App() {
             <TempDetails weather={weather} />
           </div>
           <div className="mx-auto max-w-screen-md mt-4 py-5 px-20 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
-            <HourlyForecast tittle="HOURLY FORECAST" />
+            <HourlyForecast tittle="HOURLY FORECAST" items={weather.hourly} />
           </div>
           <div className="mx-auto max-w-screen-md mt-4 py-5 px-20 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
-            <DailyForecast tittle="daily FORECAST" />
+            <DailyForecast tittle="daily FORECAST" items={weather.daily} />
           </div>
         </>
       )}
