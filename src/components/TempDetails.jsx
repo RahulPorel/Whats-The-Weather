@@ -8,21 +8,31 @@ import {
   UilSunset,
   UilTear,
 } from "@iconscout/react-unicons";
+import { iconUrlFromCode } from "../services/WeatherServices";
 
-const TempDetails = () => {
+const TempDetails = ({
+  weather: {
+    details,
+    icon,
+    temp,
+    temp_min,
+    sunrise,
+    sunset,
+    speed,
+    humidity,
+    feels_like,
+    timezone,
+  },
+}) => {
   return (
     <div>
       <div className="flex items-center justify-center py-6 text-xl text-cyan-300">
-        <p>Clody or whatever</p>
+        <p>{details}</p>
       </div>
 
       <div className="flex flex-row items-center justify-center text-white py-3 ">
-        <img
-          src="http://openweathermap.org/img/wn/01d@2x.png"
-          alt=""
-          className="w-20"
-        />
-        <p className="text-5xl">34°</p>
+        <img src={iconUrlFromCode(icon)} alt="" className="w-20" />
+        <p className="text-5xl">{`${temp.toFixed()}°`}</p>
 
         <div className="flex flex-col space-y-2 ml-80">
           <div className="flex font-light text-sm justify-between">
