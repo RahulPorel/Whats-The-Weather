@@ -23,7 +23,7 @@ function App() {
     };
     fetchWeather();
   }, [query, units]);
-  console.log(weather);
+
   return (
     <>
       <PrimarySearchAppBar />
