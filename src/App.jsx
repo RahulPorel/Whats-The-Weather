@@ -58,7 +58,24 @@ function App() {
       />
 
       <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br to-blue-700 h-fit shadow-xl shadow-gray-400">
-        <h1>Bookmark location</h1>
+        {/* <h1>
+          Bookmark location <br />*{" "}
+          <span className="flex text-center">
+            Double Click to delete location
+          </span>
+          <span>Single Click to view location</span>{" "}
+        </h1>
+        
+        */}
+
+        <div className="container flex justify-between">
+          <h2 className=" flex justify-center">Your Bookmarks</h2>
+          <span className="flex text-start">
+            Double Click to delete location
+          </span>
+          <span className="flex text-start">Single Click to view location</span>{" "}
+        </div>
+
         <hr className="my-2 text-black" />
         <BookmarkLocation
           handleDelBookmark={handleDelBookmark}
