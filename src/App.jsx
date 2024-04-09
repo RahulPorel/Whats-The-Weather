@@ -10,16 +10,18 @@ import { useEffect, useState } from "react";
 import Inputs from "./components/Inputs/Inputs";
 
 function App() {
-  const [query, setQuery] = useState({ q: "london" });
+  const [query, setQuery] = useState({ q: "Kolkata" });
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
-  const [err, setErr] = useState(false);
+  const [err, setErr] = useState(null);
+  const [geoLocApiErr, setGeoLocApiErr] = useState(null);
 
   useEffect(() => {
     const fetchWeather = async () => {
       await getFormattedWeatherData({ ...query, units })
         .then((data) => {
           setWeather(data);
+          setErr(false);
         })
         .catch((error) => {
           console.log(`Error fetching data ${error}`);
@@ -32,7 +34,12 @@ function App() {
 
   return (
     <>
-      <Inputs setQuery={setQuery} setUnits={setUnits} />
+      <Inputs
+        setQuery={setQuery}
+        setUnits={setUnits}
+        setGeoLocApiErr={setGeoLocApiErr}
+        geoLocApiErr={geoLocApiErr}
+      />
       <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br form-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
         <TopBtns
           setQuery={setQuery}
@@ -45,7 +52,11 @@ function App() {
       {weather && (
         <>
           <div className="mx-auto max-w-screen-md mt-7 py-2 px-2.5 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
-            <Time_Date weather={weather} err={err} />
+            <Time_Date
+              weather={weather}
+              err={err}
+              geoLocApiErr={geoLocApiErr}
+            />
             <TempDetails weather={weather} units={units} err={err} />
           </div>
           <div className="mx-auto max-w-screen-md mt-4 py-5 px-20 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">

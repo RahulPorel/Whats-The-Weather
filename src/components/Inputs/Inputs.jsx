@@ -1,27 +1,58 @@
 import { UilSearch, UilLocationPoint } from "@iconscout/react-unicons";
 import { useState } from "react";
 
-const Inputs = ({ setQuery, units, setUnits }) => {
+const Inputs = ({
+  setQuery,
+  units,
+  setUnits,
+  setGeoLocApiErr,
+  geoLocApiErr,
+}) => {
   const [city, setCity] = useState("");
-  console.log(city);
 
   const handleSearch = () => {
     if (city !== "") setQuery({ q: city });
+    setCity("");
   };
 
   const handleLocationBtn = () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((positions) => {
-        let lat = positions.coords.latitude;
-        let lon = positions.coords.longitude;
-
-        setQuery({
-          lat,
-          lon,
-        });
-      });
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          setGeoLocApiErr(false);
+          setQuery({
+            lat,
+            lon,
+          });
+        },
+        (error) => {
+          setGeoLocApiErr(true);
+          switch (error.code) {
+            case error.PERMISSION_DENIED:
+              console.log("User denied the request for Geolocation.");
+              break;
+            case error.POSITION_UNAVAILABLE:
+              console.log("Location information is unavailable.");
+              break;
+            case error.TIMEOUT:
+              console.log("The request to get user location timed out.");
+              break;
+            case error.UNKNOWN_ERROR:
+              console.log("An unknown error occurred.");
+              break;
+            default:
+              console.log("An error occurred.");
+          }
+        }
+      );
+    } else {
+      console.log("Geolocation is not supported by this browser.");
     }
   };
+
+  console.log(geoLocApiErr); // all good then false or true
 
   const handleUnitsCh = (e) => {
     const selectedUnits = e.currentTarget.name;
