@@ -21,7 +21,7 @@ const Inputs = () => {
 
       <div className="flex flex-row w-1/4 items-center justify-center">
         <button className="text-xl text-black font-light" name="metric">
-          °C dsfdgdfgdfgdfgdfg
+          °C
         </button>
         <p className="text-xl text-black mx-1"></p>
         <button className="text-xl text-black font-light" name="imperial">

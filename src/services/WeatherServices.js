@@ -1,16 +1,12 @@
 import { DateTime } from "luxon";
 
 const API_KEY = "5e5236275b8d7f537ba2364c14bf2324";
-// new api key
 // const API_KEY = "2b11a1d3a291f35ccb2db30a0471e979";
-// old base url
-// const BASE_URL = "https://api.openweathermap.org/data/2.5";
 const BASE_URL = "https://api.openweathermap.org/data/";
 
 const getWeatherData = (infoType, searchParams) => {
   const url = new URL(BASE_URL + "/" + infoType);
   url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });
-
   return fetch(url).then((res) => res.json());
 };
 
@@ -53,7 +49,7 @@ const formatForecastWeather = (data) => {
   let { timezone, daily, hourly } = data;
   // Ensure that there are elements in daily and hourly arrays before slicing
   if (daily && daily.length >= 6) {
-    daily = daily.slice(1, 6).map((d) => {
+    daily = daily.slice(1, 8).map((d) => {
       return {
         title: formatToLocalTime(d.dt, timezone, "ccc"),
         temp: d.temp.day,
@@ -63,7 +59,7 @@ const formatForecastWeather = (data) => {
   }
 
   if (hourly && hourly.length >= 6) {
-    hourly = hourly.slice(1, 6).map((d) => {
+    hourly = hourly.slice(1, 8).map((d) => {
       return {
         title: formatToLocalTime(d.dt, timezone, "hh:mm a"),
         temp: d.temp,
@@ -96,7 +92,8 @@ const getFormattedWeatherData = async (searchParams) => {
 const formatToLocalTime = (
   secs,
   zone,
-  format = "cccc, dd LLL yyyy' | Local time: 'hh:mm a"
+  // format = "cccc, dd LLL yyyy' | Local time: 'hh:mm a"
+  format = "'Last refresh: ' h : mm a"
 ) => DateTime.fromSeconds(secs).setZone(zone).toFormat(format);
 
 const iconUrlFromCode = (code) =>
