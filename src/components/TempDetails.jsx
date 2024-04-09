@@ -26,13 +26,14 @@ const TempDetails = ({
     humidity,
     feels_like,
     timezone,
+    visibility,
+    pressure,
   },
 }) => {
   return (
     <div>
       <div className="flex items-center justify-center py-6 text-xl text-cyan-300">
         <p> {details === "Clouds" ? "Cloudy" : details}&nbsp;Weather</p>
-        {console.log(details.toUpperCase())}
       </div>
 
       <div className="flex flex-row items-center justify-center text-white py-3 ">
@@ -49,7 +50,6 @@ const TempDetails = ({
               &nbsp;{`${humidity.toFixed()}%`}
             </span>
           </div>
-
           <div className="flex font-light text-sm justify-between">
             <div className="flex items-center">
               <UilTemperature size={18} className="mr-1" />
@@ -63,6 +63,13 @@ const TempDetails = ({
               <span>Wind:</span>
             </div>
             <span className="font-medium ">{`${speed.toFixed()}km/h`}</span>
+          </div>
+          <div className="flex font-light text-sm justify-between">
+            <div className="flex items-center">
+              <UilArrowUp size={18} className="mr-1" />
+              <span>Visibility: </span>
+            </div>
+            <span className="font-medium"> &nbsp; {`${visibility}%`}</span>
           </div>
         </div>
       </div>
