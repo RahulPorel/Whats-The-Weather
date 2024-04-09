@@ -11,7 +11,7 @@ const HourlyForecast = ({ title, items }) => {
       <hr className="my-2" />
 
       <div className="flex flex-row items-center text-white justify-between">
-        {/* {items.map((item) => (
+        {items.map((item) => (
           <div className="flex flex-col items-center justify-center">
             <p className="font-light text-sm">{item.title}</p>
             <img
@@ -19,9 +19,9 @@ const HourlyForecast = ({ title, items }) => {
               className="w-12 my-1"
               alt="weather icon"
             />
-            <p className="font-medium">{`${item.temp.toFixed()}°c`}</p>
+            <p className="font-medium">{`${item.temp.toFixed()} °C`}</p>
           </div>
-        ))} */}
+        ))}
       </div>
     </div>
   );
