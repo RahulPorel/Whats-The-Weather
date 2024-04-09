@@ -1,13 +1,30 @@
 import { DateTime } from "luxon";
 
-const API_KEY = "5e5236275b8d7f537ba2364c14bf2324";
-// const API_KEY = "2b11a1d3a291f35ccb2db30a0471e979";
-const BASE_URL = "https://api.openweathermap.org/data/";
+const API_KEY = "2b11a1d3a291f35ccb2db30a0471e979";
+const BASE_URL = "https://api.openweathermap.org/data";
 
-const getWeatherData = (infoType, searchParams) => {
+const getWeatherData = (infoType, searchParams, retryCount = 3) => {
   const url = new URL(BASE_URL + "/" + infoType);
   url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });
-  return fetch(url).then((res) => res.json());
+
+  return fetch(url)
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+      return res.json();
+    })
+    .catch(async (error) => {
+      console.log(`Error fetching data: ${error}`);
+      if (retryCount > 0) {
+        console.log(`Retrying... (${retryCount} attempts left)`);
+        await new Promise((resolve) => setTimeout(resolve, 2000)); // Wait for 2 seconds before retrying
+        return getWeatherData(infoType, searchParams, retryCount - 1);
+      } else {
+        console.log("Retry limit reached. Aborting.");
+        return null;
+      }
+    });
 };
 
 const formatCurrWeather = (data) => {

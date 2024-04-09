@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { shuffledCities } from "../../utils/randomCity";
 import "./TopBtns.css";
 
 const TopBtns = ({ setQuery, setErr }) => {
   const [selectedCity, setSelectedCity] = useState(null);
-  const [reloadCity, setReloadCity] = useState(false);
+
 
   // Slice the shuffledCities array to get the first 5 cities
   const topCities = shuffledCities.slice(0, 5);
@@ -18,11 +18,6 @@ const TopBtns = ({ setQuery, setErr }) => {
   const reloadCityBtn = () => {
     window.location.reload();
   };
-
-  useEffect(() => {
-    // This effect will run when reloadCity state changes
-    console.log(reloadCity); // Log the reloadCity state
-  }, [reloadCity]); // Depend on reloadCity state
 
   return (
     <div className="flex items-center justify-center">
@@ -40,7 +35,7 @@ const TopBtns = ({ setQuery, setErr }) => {
           {city.cityNa}
         </button>
       ))}
-      <button onClick={reloadCityBtn}>Reload </button>
+ 
     </div>
   );
 };

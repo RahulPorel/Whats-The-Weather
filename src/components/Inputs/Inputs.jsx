@@ -2,14 +2,14 @@ import { UilSearch, UilLocationPoint } from "@iconscout/react-unicons";
 import { useState } from "react";
 
 const Inputs = ({
+  query,
   setQuery,
   units,
   setUnits,
   setGeoLocApiErr,
-  geoLocApiErr,
+  handleAddBookmarkLocation,
 }) => {
   const [city, setCity] = useState("");
-
   const handleSearch = () => {
     if (city !== "") setQuery({ q: city });
     setCity("");
@@ -52,8 +52,6 @@ const Inputs = ({
     }
   };
 
-  console.log(geoLocApiErr); // all good then false or true
-
   const handleUnitsCh = (e) => {
     const selectedUnits = e.currentTarget.name;
     if (units !== selectedUnits) setUnits(selectedUnits);
@@ -89,7 +87,7 @@ const Inputs = ({
           size={30}
           className="text-white cursor-pointer transition ease-out hover:scale-125"
         /> */}
-        <button className=" text-white">
+        <button onClick={handleAddBookmarkLocation} className=" text-white">
           <i className="fa-regular fa-bookmark text-white "></i>
         </button>{" "}
       </div>
