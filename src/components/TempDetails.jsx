@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   UilArrowUp,
   UilArrowDown,
@@ -12,6 +12,8 @@ import {
   iconUrlFromCode,
   formatToLocalTime,
 } from "../services/WeatherServices";
+
+console.log();
 
 const TempDetails = ({
   weather: {
@@ -29,6 +31,7 @@ const TempDetails = ({
     visibility,
     pressure,
   },
+  units,
 }) => {
   return (
     <div>
@@ -38,7 +41,10 @@ const TempDetails = ({
 
       <div className="flex flex-row items-center justify-center text-white py-3 ">
         <img src={iconUrlFromCode(icon)} alt="" className="w-20" />
-        <p className="text-5xl">{`${temp.toFixed()}°c`}</p>
+        <p className="text-5xl">
+          {`${temp.toFixed()}°`} {units === "metric" ? "C" : "F"}
+          {}
+        </p>
 
         <div className="flex flex-col space-y-2 ml-80">
           <div className="flex font-light text-sm justify-between">
@@ -55,7 +61,9 @@ const TempDetails = ({
               <UilTemperature size={18} className="mr-1" />
               <span>Feels like: </span>
             </div>
-            <span className="font-medium">{`${feels_like.toFixed()}°c`}</span>
+            <span className="font-medium">
+              {`${feels_like.toFixed()}°`} {units === "metric" ? "C" : "F"}
+            </span>
           </div>
           <div className="flex font-light text-sm justify-between">
             <div className="flex items-center">
@@ -95,13 +103,17 @@ const TempDetails = ({
         <UilSun />
         <p className="font-light">
           High:
-          <span className="font-medium ml-1">{`${temp_max.toFixed()} °c`}</span>
+          <span className="font-medium ml-1">
+            {`${temp_max.toFixed()} °`} {units === "metric" ? "C" : "F"}
+          </span>
         </p>
         <p className="font-light"></p>
         <UilSun />
         <p className="font-light">
           Low:
-          <span className="font-medium ml-1">{`${temp_min.toFixed()} °c`}</span>
+          <span className="font-medium ml-1">
+            {`${temp_min.toFixed()} °`} {units === "metric" ? "C" : "F"}
+          </span>
         </p>
       </div>
     </div>

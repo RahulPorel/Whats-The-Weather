@@ -41,13 +41,21 @@ function App() {
         <>
           <div className="mx-auto max-w-screen-md mt-7 py-2 px-2.5 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
             <Time_Date weather={weather} loading={loading} />
-            <TempDetails weather={weather} />
+            <TempDetails weather={weather} units={units} />
           </div>
           <div className="mx-auto max-w-screen-md mt-4 py-5 px-20 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
-            <HourlyForecast tittle="HOURLY FORECAST" items={weather.hourly} />
+            <HourlyForecast
+              tittle="HOURLY FORECAST"
+              items={weather.hourly}
+              units={units}
+            />
           </div>
           <div className="mx-auto max-w-screen-md mt-4 py-5 px-20 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
-            <DailyForecast tittle="7 daily FORECAST" items={weather.daily} />
+            <DailyForecast
+              tittle="7 daily FORECAST"
+              items={weather.daily}
+              units={units}
+            />
           </div>
         </>
       )}

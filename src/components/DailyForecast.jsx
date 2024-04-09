@@ -1,6 +1,6 @@
 import { iconUrlFromCode } from "../services/WeatherServices";
 
-const DailyForecast = ({ tittle, items, id }) => {
+const DailyForecast = ({ tittle, items, id, units }) => {
   console.log(id);
   return (
     <div>
@@ -18,7 +18,9 @@ const DailyForecast = ({ tittle, items, id }) => {
               className="w-12 my-1"
               alt=""
             />
-            <p className="font-medium">{`${item.temp.toFixed()} °C`}</p>
+            <p className="font-medium">
+              {`${item.temp.toFixed()} °`} {units === "metric" ? "C" : "F"}
+            </p>
           </div>
         ))}
       </div>

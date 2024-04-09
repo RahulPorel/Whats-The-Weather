@@ -28,6 +28,8 @@ const Inputs = ({ setQuery, units, setUnits }) => {
     if (units !== selectedUnits) setUnits(selectedUnits);
   };
 
+  
+
   return (
     <div
       className="flex 
