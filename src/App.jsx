@@ -56,14 +56,17 @@ function App() {
         geoLocApiErr={geoLocApiErr}
         handleAddBookmarkLocation={handleAddBookmarkLocation}
       />
-      <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br form-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
+
+      <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br to-blue-700 h-fit shadow-xl shadow-gray-400">
         <h1>Bookmark location</h1>
         <hr className="my-2 text-black" />
         <BookmarkLocation
           handleDelBookmark={handleDelBookmark}
           bookmarks={bookmarks}
+          setQuery={setQuery}
         />
       </div>
+
       <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br form-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
         <TopBtns
           setQuery={setQuery}

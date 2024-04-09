@@ -4,8 +4,6 @@ import "./TopBtns.css";
 
 const TopBtns = ({ setQuery, setErr }) => {
   const [selectedCity, setSelectedCity] = useState(null);
-
-
   // Slice the shuffledCities array to get the first 5 cities
   const topCities = shuffledCities.slice(0, 5);
 
@@ -35,7 +33,6 @@ const TopBtns = ({ setQuery, setErr }) => {
           {city.cityNa}
         </button>
       ))}
- 
     </div>
   );
 };
