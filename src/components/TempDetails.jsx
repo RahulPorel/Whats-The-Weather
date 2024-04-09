@@ -8,7 +8,10 @@ import {
   UilSunset,
   UilTear,
 } from "@iconscout/react-unicons";
-import { iconUrlFromCode } from "../services/WeatherServices";
+import {
+  iconUrlFromCode,
+  formatToLocalTime,
+} from "../services/WeatherServices";
 
 const TempDetails = ({
   weather: {
@@ -32,37 +35,32 @@ const TempDetails = ({
 
       <div className="flex flex-row items-center justify-center text-white py-3 ">
         <img src={iconUrlFromCode(icon)} alt="" className="w-20" />
-        <p className="text-5xl">{`${temp.toFixed()}°`}</p>
+        <p className="text-5xl">{`${temp.toFixed()}°c`}</p>
 
         <div className="flex flex-col space-y-2 ml-80">
           <div className="flex font-light text-sm justify-between">
             <div className="flex items-center">
               <UilTear size={18} className="mr-1" />
-              <span>Humidity</span>
+              <span>Humidity: </span>
             </div>
-            <span className="font-medium">32°</span>
+            <span className="font-medium">
+              &nbsp;{`${humidity.toFixed()}%`}
+            </span>
           </div>
+
           <div className="flex font-light text-sm justify-between">
-            {" "}
-            {/* Changed alignment to justify-between */}
             <div className="flex items-center">
-              {" "}
-              {/* Wrapper div for label and icon */}
               <UilTemperature size={18} className="mr-1" />
-              <span>Real Feel</span>
+              <span>Feels like: </span>
             </div>
-            <span className="font-medium">32°</span>
+            <span className="font-medium">{`${feels_like.toFixed()}°c`}</span>
           </div>
           <div className="flex font-light text-sm justify-between">
-            {" "}
-            {/* Changed alignment to justify-between */}
             <div className="flex items-center">
-              {" "}
-              {/* Wrapper div for label and icon */}
               <UilWind size={18} className="mr-1" />
-              <span>Wind Speed</span>
+              <span>Wind:</span>
             </div>
-            <span className="font-medium">32°</span>
+            <span className="font-medium ">{`${speed.toFixed()}km/h`}</span>
           </div>
         </div>
       </div>
@@ -71,7 +69,9 @@ const TempDetails = ({
         <p className="font-light">
           {" "}
           SunRise:
-          <span className="font-medium ml-1">06:45am</span>
+          <span className="font-medium ml-1">
+            {formatToLocalTime(sunrise, timezone, "hh:mm a")}
+          </span>
         </p>
         <p className="font-light"></p>
         <UilSunset />
