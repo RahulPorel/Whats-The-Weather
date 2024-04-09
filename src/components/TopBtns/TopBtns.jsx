@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { shuffledCities } from "../../utils/randomCity";
 import "./TopBtns.css";
 
-const TopBtns = ({ setQuery }) => {
+const TopBtns = ({ setQuery, setErr }) => {
   const [selectedCity, setSelectedCity] = useState(null);
   const [reloadCity, setReloadCity] = useState(false);
 
@@ -12,6 +12,7 @@ const TopBtns = ({ setQuery }) => {
   const handleCityClick = (cityId, cityName) => {
     setSelectedCity(cityId);
     setQuery({ q: cityName });
+    setErr(false);
   };
 
   const reloadCityBtn = () => {

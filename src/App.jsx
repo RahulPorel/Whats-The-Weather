@@ -34,13 +34,18 @@ function App() {
     <>
       <Inputs setQuery={setQuery} setUnits={setUnits} />
       <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br form-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
-        <TopBtns setQuery={setQuery} units={units} setUnits={setUnits} />
+        <TopBtns
+          setQuery={setQuery}
+          units={units}
+          setUnits={setUnits}
+          setErr={setErr}
+        />
       </div>
 
       {weather && (
         <>
           <div className="mx-auto max-w-screen-md mt-7 py-2 px-2.5 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
-            <Time_Date weather={weather}  err={err}/>
+            <Time_Date weather={weather} err={err} />
             <TempDetails weather={weather} units={units} err={err} />
           </div>
           <div className="mx-auto max-w-screen-md mt-4 py-5 px-20 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
@@ -48,6 +53,7 @@ function App() {
               tittle="HOURLY FORECAST"
               items={weather.hourly}
               units={units}
+              err={err}
             />
           </div>
           <div className="mx-auto max-w-screen-md mt-4 py-5 px-20 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">

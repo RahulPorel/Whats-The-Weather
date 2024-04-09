@@ -1,7 +1,7 @@
 // import { teal } from "@mui/material/colors";
 import { iconUrlFromCode } from "../services/WeatherServices";
 
-const HourlyForecast = ({ tittle, items, units }) => {
+const HourlyForecast = ({ tittle, items, units, err }) => {
   return (
     <div>
       <div className="flex items-center justify-start mt-6 ">
@@ -16,7 +16,9 @@ const HourlyForecast = ({ tittle, items, units }) => {
             // key ={item.id}
             className="flex flex-col items-center justify-center"
           >
-            <p className="font-light text-sm">{item.title}</p>
+            <p className="font-light text-sm">
+              {!err ? `${item.title}` : "Try again"}
+            </p>
             <img
               src={iconUrlFromCode(item.icon)}
               className="w-12 my-1"
