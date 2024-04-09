@@ -28,8 +28,6 @@ const Inputs = ({ setQuery, units, setUnits }) => {
     if (units !== selectedUnits) setUnits(selectedUnits);
   };
 
-  
-
   return (
     <div
       className="flex 
@@ -75,7 +73,9 @@ const Inputs = ({ setQuery, units, setUnits }) => {
         </button>
         <p className="text-xl text-white mx-1"> | </p>
         <button
-          className="text-xl text-white font-light transition ease-out hover:scale-75"
+          className={`
+          text-xl text-white font-light transition ease-out hover:scale-75 
+          }`}
           name="imperial"
           onClick={handleUnitsCh}
         >

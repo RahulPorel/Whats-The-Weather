@@ -13,22 +13,22 @@ function App() {
   const [query, setQuery] = useState({ q: "london" });
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
-  const [loading, setLoading] = useState(null);
+  const [err, setErr] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
     const fetchWeather = async () => {
       await getFormattedWeatherData({ ...query, units })
         .then((data) => {
           setWeather(data);
-          setLoading(false);
         })
         .catch((error) => {
           console.log(`Error fetching data ${error}`);
+          setErr(true);
         });
     };
     fetchWeather();
   }, [query, units]);
+  console.log(err);
 
   return (
     <>
@@ -40,8 +40,8 @@ function App() {
       {weather && (
         <>
           <div className="mx-auto max-w-screen-md mt-7 py-2 px-2.5 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
-            <Time_Date weather={weather} loading={loading} />
-            <TempDetails weather={weather} units={units} />
+            <Time_Date weather={weather}  err={err}/>
+            <TempDetails weather={weather} units={units} err={err} />
           </div>
           <div className="mx-auto max-w-screen-md mt-4 py-5 px-20 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
             <HourlyForecast

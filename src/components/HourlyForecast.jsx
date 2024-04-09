@@ -1,7 +1,7 @@
 // import { teal } from "@mui/material/colors";
 import { iconUrlFromCode } from "../services/WeatherServices";
 
-const HourlyForecast = ({ tittle, items }) => {
+const HourlyForecast = ({ tittle, items, units }) => {
   return (
     <div>
       <div className="flex items-center justify-start mt-6 ">
@@ -12,7 +12,8 @@ const HourlyForecast = ({ tittle, items }) => {
       <div className="flex flex-row items-center text-white justify-between">
         {items.map((item) => (
           <div
-            // key={item.id}
+            // TODO add key
+            // key ={item.id}
             className="flex flex-col items-center justify-center"
           >
             <p className="font-light text-sm">{item.title}</p>
@@ -21,7 +22,9 @@ const HourlyForecast = ({ tittle, items }) => {
               className="w-12 my-1"
               alt="weather icon"
             />
-            <p className="font-medium">{`${item.temp.toFixed()} °C`}</p>
+            <p className="font-medium">
+              {`${item.temp.toFixed()} °`} {units === "metric" ? "C" : "F"}
+            </p>
           </div>
         ))}
       </div>

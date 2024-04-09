@@ -76,7 +76,7 @@ export const cities = [
   },
   {
     id: uuid(),
-    cityNa: "New York City",
+    cityNa: "New York ",
   },
   {
     id: uuid(),

@@ -32,6 +32,7 @@ const TempDetails = ({
     pressure,
   },
   units,
+  err,
 }) => {
   return (
     <div>
