@@ -118,3 +118,14 @@ const iconUrlFromCode = (code) =>
 
 export default getFormattedWeatherData;
 export { formatToLocalTime, iconUrlFromCode };
+
+// export const GEO_API_URL =
+//   "https://wft-geo-db.p.rapidapi.com/v1/geo/adminDivisions";
+
+// export const geoApiOptions = {
+//   method: "GET",
+//   headers: {
+//     "X-RapidAPI-Key": "62efe7785amsh05501f8ff4b31f5p1d52d4jsn9b1f4fa91e2e",
+//     "X-RapidAPI-Host": "wft-geo-db.p.rapidapi.com",
+//   },
+// };

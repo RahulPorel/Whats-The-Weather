@@ -4,6 +4,8 @@ import Switch from "@mui/material/Switch";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { cities } from "../../utils/randomCity";
+// import { GEO_API_URL, geoApiOptions } from "../../services/WeatherServices";
+
 import "./Inputs.css";
 const Inputs = ({
   query,
@@ -21,6 +23,18 @@ const Inputs = ({
     setCity("");
     console.log(city);
   };
+
+  // const loadOptions = (inputVal) => {
+  //   return fetch(
+  //     `${GEO_API_URL}/cities?minPopulation=1000000&namePrefix=Mumbai`,
+  //     geoApiOptions
+  //   )
+  //     .then((res) => res.json())
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err));
+  // };
+
+  // loadOptions();
 
   const handleLocationBtn = () => {
     if (navigator.geolocation) {
@@ -68,11 +82,8 @@ const Inputs = ({
   };
   const onSearch = (searchTerm) => {
     setCity(searchTerm);
-    console.log(searchTerm);
+    // console.log(searchTerm);
   };
-  // const handleSearchClick = (e) => {
-  //   console.log(e.currentTarget.name);
-  // };
 
   return (
     <>
