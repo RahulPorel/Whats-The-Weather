@@ -3,16 +3,9 @@
 body {
   font-family: "Poppins", sans-serif;
 }
-/* .container{
-  padding-top: 1.25rem;
-padding-bottom: 1.25rem; 
-padding-left: 5rem;
-padding-right: 5rem; 
-margin-top: 1rem; 
-max-width: 768px; 
-height: fit-content; 
-background-image: background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)); 
-background-color: #1D4ED8; 
-box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); 
-
-} */
+@media only screen and(min-width: 768px) {
+  .res {
+    background-color: black;
+    color: aqua;
+  }
+}

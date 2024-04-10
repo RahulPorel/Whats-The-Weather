@@ -71,7 +71,7 @@ function App() {
   };
 
   return (
-    <>
+    <div className="res">
       <Inputs
         setQuery={setQuery}
         query={query}
@@ -83,7 +83,7 @@ function App() {
         isDetailOn={isDetailOn}
       />
       {isBookmarkOn ? (
-        <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br to-blue-700 h-fit shadow-xl shadow-gray-400">
+        <div className=" mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br to-blue-700 h-fit shadow-xl shadow-gray-400">
           <div className="container flex justify-between">
             <h2 className=" flex justify-center">Your Saved Bookmarks</h2>
             <span className="flex text-start">Click to view</span>{" "}
@@ -100,7 +100,7 @@ function App() {
         </div>
       ) : null}
 
-      <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br to-blue-700 h-fit shadow-xl shadow-gray-400">
+      <div className="mx-auto max-w-screen-md mt-8 py-5 px-4 bg-gradient-to-br to-blue-400 h-fit shadow-lg shadow-gray-500 bg-slate-100">
         <TopBtns
           setQuery={setQuery}
           units={units}
@@ -112,7 +112,7 @@ function App() {
       {weather && (
         <>
           <div
-            className={`mx-auto max-w-screen-md mt-7 py-2 px-2.5 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400 ${formatBg()}`}
+            className={`mx-auto max-w-screen-md mt-9 py-2 px-3.5 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400 ${formatBg()}`}
           >
             <Time_Date
               isBookmarkOn={isBookmarkOn}
@@ -153,7 +153,7 @@ function App() {
           />
         </>
       )}
-    </>
+    </div>
   );
 }
 
