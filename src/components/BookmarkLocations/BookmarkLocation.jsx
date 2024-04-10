@@ -1,20 +1,16 @@
 import "./BookmarkLocation.css";
 
-const BookmarkLocation = ({ bookmarks, handleDelBookmark, setQuery }) => {
+const BookmarkLocation = ({ handleDelBookmark, setQuery, bookmarks }) => {
   const handleCityClick = (city) => {
-    console.log(city);
-
     setQuery({ q: city });
-    // setSelectedCity(cityId);
-    // setQuery({ q: cityName });
   };
 
   return (
-    <div className="container">
-      <ul className="todo-list">
+    <div className="flex flex-wrap">
+      <ul className="bookmark-list flex flex-wrap p-0 m-0 list-none">
         {bookmarks.map((bookmark, index) => (
           <li
-            className="cursor-pointer"
+            className="cursor-pointer text-black text-lg font-medium transition ease-in-out hover:scale-125"
             key={index}
             onClick={() => handleCityClick(bookmark)}
             onDoubleClick={() => handleDelBookmark(index)}

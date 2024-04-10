@@ -16,12 +16,13 @@ function App() {
   const [weather, setWeather] = useState(null);
   const [err, setErr] = useState(null);
   const [geoLocApiErr, setGeoLocApiErr] = useState(null);
+  const [bookmarks, setBookmarks] = useState([]);
 
   useEffect(() => {
     const fetchWeather = async () => {
       await getFormattedWeatherData({ ...query, units })
         .then((data) => {
-          setWeather(data);
+          setWeather(data); // temporialy studown api
           setErr(false);
         })
         .catch((error) => {
@@ -32,18 +33,16 @@ function App() {
     fetchWeather();
   }, [query, units]);
 
-  const [bookmarks, setBookmark] = useState([]);
-
   const handleAddBookmarkLocation = () => {
     if (query.q !== "") {
-      setBookmark([...bookmarks, query.q]);
+      setBookmarks([...bookmarks, query.q]);
     }
   };
 
   const handleDelBookmark = (index) => {
     const newBookmark = [...bookmarks];
     newBookmark.splice(index, 1);
-    setBookmark(newBookmark);
+    setBookmarks(newBookmark);
   };
 
   return (
@@ -58,16 +57,6 @@ function App() {
       />
 
       <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br to-blue-700 h-fit shadow-xl shadow-gray-400">
-        {/* <h1>
-          Bookmark location <br />*{" "}
-          <span className="flex text-center">
-            Double Click to delete location
-          </span>
-          <span>Single Click to view location</span>{" "}
-        </h1>
-        
-        */}
-
         <div className="container flex justify-between">
           <h2 className=" flex justify-center">Your Bookmarks</h2>
           <span className="flex text-start">
@@ -80,6 +69,7 @@ function App() {
         <BookmarkLocation
           handleDelBookmark={handleDelBookmark}
           bookmarks={bookmarks}
+          setBookmarks={setBookmarks}
           setQuery={setQuery}
         />
       </div>
