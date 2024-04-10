@@ -129,3 +129,25 @@ export { formatToLocalTime, iconUrlFromCode };
 //     "X-RapidAPI-Host": "wft-geo-db.p.rapidapi.com",
 //   },
 // };
+
+// const fetch = require("node-fetch"); // Assuming you're using Node.js environment
+
+// Function to fetch cities from GeoNames API
+// async function fetchCities() {
+//   const username = "rahulporel51"; // Replace with your GeoNames username
+//   const url = `http://api.geonames.org/citiesJSON?north=90&south=-90&east=180&west=-180&lang=en&username=${username}`;
+
+//   try {
+//     const response = await fetch(url);
+//     const data = await response.json();
+//     return data.geonames.map((city) => ({ id: uuid(), cityNa: city.name }));
+//   } catch (error) {
+//     console.error("Error fetching cities:", error);
+//     return [];
+//   }
+// }
+
+// // Example usage
+// fetchCities().then((cities) => {
+//   console.log(cities);
+// });
