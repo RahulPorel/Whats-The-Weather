@@ -1,36 +1,3 @@
-
-
-
-# Snapshot of What's The Weather
-
-![image](https://github.com/RahulPorel/Visiting-Card-Builder/assets/98636266/7cf27adc-903b-4058-9bb9-02235b71dfae)
-![Screenshot (517)](https://github.com/RahulPorel/Visiting-Card-Builder/assets/98636266/2354ec71-694c-4f5f-9725-5ae64803d19b)
-![Screenshot (518)](https://github.com/RahulPorel/Visiting-Card-Builder/assets/98636266/0d818c34-1288-49f2-a751-8d95729532ac)
-![Screenshot (519)](https://github.com/RahulPorel/Visiting-Card-Builder/assets/98636266/ab85dc55-f9ec-4294-a98f-84fbbee34e5c)
-![Screenshot (520)](https://github.com/RahulPorel/Visiting-Card-Builder/assets/98636266/e82071f3-c668-4955-b384-12dd912575d4)
-![Screenshot (521)](https://github.com/RahulPorel/Visiting-Card-Builder/assets/98636266/b38e532a-d283-4084-a80c-920e3643ccb9)
-
-## To run locally
-
-#### 01. Install node dependices
-
-```npm
- npm i
-```
-
-#### 02. Run project in localhost
-
-```npm
- npm run dev
-```
-
-#### 03. Build this project for deployment
-
-```npm
- npm run build
-
-```
-
 # Weather App
 
 Welcome to the What's the Weather App! This application provides users with detailed weather forecasts for their current location or any location of interest and also this app offers various features to enhance the user experience.
@@ -69,17 +36,16 @@ Toggle the bookmark feature on or off to manage saved locations easily.
 
 The app provides users with both hourly and daily weather forecasts to help plan activities accordingly.
 
+## Snapshot of What's The Weather
+
+![image](https://github.com/RahulPorel/Visiting-Card-Builder/assets/98636266/7cf27adc-903b-4058-9bb9-02235b71dfae)
+![Screenshot (517)](https://github.com/RahulPorel/Visiting-Card-Builder/assets/98636266/2354ec71-694c-4f5f-9725-5ae64803d19b)
+![Screenshot (518)](https://github.com/RahulPorel/Visiting-Card-Builder/assets/98636266/0d818c34-1288-49f2-a751-8d95729532ac)
+![Screenshot (519)](https://github.com/RahulPorel/Visiting-Card-Builder/assets/98636266/ab85dc55-f9ec-4294-a98f-84fbbee34e5c)
+![Screenshot (520)](https://github.com/RahulPorel/Visiting-Card-Builder/assets/98636266/e82071f3-c668-4955-b384-12dd912575d4)
+![Screenshot (521)](https://github.com/RahulPorel/Visiting-Card-Builder/assets/98636266/b38e532a-d283-4084-a80c-920e3643ccb9)
+
 #### Many more features will be added to this build in future
-
-## Installation
-
-To run the Weather App locally, follow these steps:
-
-1. Clone this repository.
-2. Navigate to the project directory.
-3. Run `npm install` to install dependencies.
-4. Run `npm start` to start the development server.
-5. Open your browser and visit `http://localhost:3000`.
 
 ## Usage
 
@@ -92,20 +58,26 @@ Once the app is running, users can:
 - Explore hourly and daily weather forecasts.
 - Click on quick city search options for instant weather details.
 
-## Contributing
+## To run locally
 
-Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
+#### 01. Clone this repository.
 
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/new-feature`).
-3. Make your changes.
-4. Commit your changes (`git commit -am 'Add new feature'`).
-5. Push to the branch (`git push origin feature/new-feature`).
-6. Create a new Pull Request.
+#### 02. Navigate to the project directory.
+
+#### 03. Install node dependices
+
+```npm
+ npm i
+```
+
+#### 04. Run project in localhost
+
+```npm
+ npm run dev
+```
 
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
 
 ---
-
