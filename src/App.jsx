@@ -21,6 +21,7 @@ function App() {
   const [isDetailOn, setisDetailOn] = useState(false);
   const [isBookmarkOn, setIsBookmarkOn] = useState(false);
   const handleBookmarkToggle = () => {
+    // toast.info("bookmark toggle");
     setIsBookmarkOn(!isBookmarkOn);
   };
 
@@ -66,8 +67,9 @@ function App() {
 
   const handleIsDetailToggle = () => {
     setisDetailOn(!isDetailOn);
+    toast.info(`App layout changed`);
   };
-  
+
   return (
     <>
       <Inputs

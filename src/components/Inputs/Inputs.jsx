@@ -61,6 +61,8 @@ const Inputs = ({
   const handleUnitsCh = (e) => {
     const selectedUnits = e.currentTarget.name;
     if (units !== selectedUnits) setUnits(selectedUnits);
+    toast.info(`Changed to ${selectedUnits}`);
+    console.log(selectedUnits);
   };
 
   return (

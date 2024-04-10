@@ -13,7 +13,6 @@ const Time_Date = ({
     <>
       <FormControlLabel
         label={isBookmarkOn ? "Turn off bookmark " : "Turn on bookmark"}
-        // "Turn off bookmark"
         control={
           <Switch checked={isBookmarkOn} onChange={handleBookmarkToggle} />
         }
