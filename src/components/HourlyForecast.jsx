@@ -1,19 +1,17 @@
-// import { teal } from "@mui/material/colors";
 import { iconUrlFromCode } from "../services/WeatherServices";
 
-const HourlyForecast = ({ tittle, items, units, err }) => {
+const HourlyForecast = ({ title, items, units, err }) => {
   return (
     <div>
       <div className="flex items-center justify-start mt-6 ">
-        <p className="text-white font-medium uppercase">{tittle}</p>
+        <p className="text-white font-medium uppercase">{title}</p>
       </div>
       <hr className="my-2" />
 
       <div className="flex flex-row items-center text-white justify-between">
-        {items.map((item) => (
+        {items.map((item, index) => (
           <div
-            // TODO add key
-            // key ={item.id}
+            key={index} // Added key prop using the index
             className="flex flex-col items-center justify-center"
           >
             <p className="font-light text-sm">
