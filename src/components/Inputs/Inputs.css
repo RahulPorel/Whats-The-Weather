@@ -1,0 +1,20 @@
+.dropdown-roll {
+  cursor: pointer;
+  text-align: center;
+  margin: 5px 0;
+}
+
+.dropdown {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  font-size: 25px;
+}
+.dropdown {
+  border: none;
+}
+
+.search-inner {
+  display: flex;
+}
