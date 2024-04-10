@@ -1,5 +1,7 @@
 import { UilSearch, UilLocationPoint } from "@iconscout/react-unicons";
 import { useState } from "react";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
 const Inputs = ({
   query,
   setQuery,
@@ -7,6 +9,8 @@ const Inputs = ({
   setUnits,
   setGeoLocApiErr,
   handleAddBookmarkLocation,
+  handleIsDetailToggle,
+  isDetailOn,
 }) => {
   const [city, setCity] = useState("");
   const handleSearch = () => {
@@ -63,35 +67,46 @@ const Inputs = ({
     "
     >
       <div className="flex flex-row w-4/4 items-center justify-center space-x-4">
-        <h1 className="text-white ml-4">What the Weather</h1>
+        <h1 className="text-white ml-4">What's the Weather </h1>
         <input
           value={city}
           onChange={(e) => setCity(e.currentTarget.value)}
           type="search"
           placeholder="search for city..."
-          className="text-l rounded-2xl font-medium p-2 w-full shadow-xl focus:outline-none capitalize placeholder:lowercase"
+          className="text-l rounded-3xl font-medium p-4 w-full shadow-xl focus:outline-none capitalize placeholder:lowercase"
         />
         <UilSearch
           onClick={handleSearch}
-          size={35}
+          size={65}
           className="text-white  cursor-pointer transition ease-out hover:scale-125"
         />
-        <span className="text-white  font-light text-3xl"> | </span>
+        <span className="text-white  font-light text-4xl"> | </span>
         <UilLocationPoint
-          size={35}
+          size={65}
           onClick={handleLocationBtn}
           className="text-white  cursor-pointer transition ease-out hover:scale-125"
         />
-        <button onClick={handleAddBookmarkLocation} className="  text-white">
-          {" "}
-          Add
-          <i className="fa-regular fa-bookmark text-white "></i>
-        </button>{" "}
+        <button onClick={handleAddBookmarkLocation}>
+          <i className="text-2xl mt-0.5 ml-3 fa-regular fa-bookmark text-white "></i>
+        </button>
+
+        <FormControlLabel
+          label={isDetailOn ? "Detail mode" : "Basic mode"}
+          // detail
+          className="text-white "
+          control={
+            <Switch
+              color="warning"
+              checked={isDetailOn}
+              onChange={handleIsDetailToggle}
+            />
+          }
+        />
       </div>
 
-      <div className="flex flex-row w-1/4 items-center ml-14 justify-end">
+      <div className="flex flex-row w-1/12 items-center ml-10 mr-5 justify-end">
         <button
-          className="text-xl text-white font-light transition ease-out hover:scale-75"
+          className="text-xl text-white font-semibold transition ease-out hover:scale-75"
           name="metric"
           onClick={handleUnitsCh}
         >
@@ -100,7 +115,7 @@ const Inputs = ({
         <p className="text-xl text-white mx-1"> | </p>
         <button
           className={`
-          text-xl text-white font-light transition ease-out hover:scale-75 
+          text-xl text-white font-semibold transition ease-out hover:scale-75 
           }`}
           name="imperial"
           onClick={handleUnitsCh}

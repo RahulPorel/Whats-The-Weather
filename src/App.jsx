@@ -54,7 +54,11 @@ function App() {
     if (weather.temp <= threshold) return " from-cyan-700 to-blue-700 ";
     return "from-yellow-700 to-orange-700";
   };
+  const [isDetailOn, setisDetailOn] = useState(false);
 
+  const handleIsDetailToggle = () => {
+    setisDetailOn(!isDetailOn);
+  };
   return (
     <>
       <Inputs
@@ -64,6 +68,8 @@ function App() {
         setGeoLocApiErr={setGeoLocApiErr}
         geoLocApiErr={geoLocApiErr}
         handleAddBookmarkLocation={handleAddBookmarkLocation}
+        handleIsDetailToggle={handleIsDetailToggle}
+        isDetailOn={isDetailOn}
       />
       {isBookmarkOn ? (
         <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br to-blue-700 h-fit shadow-xl shadow-gray-400">
@@ -106,25 +112,29 @@ function App() {
             />
             <TempDetails weather={weather} units={units} err={err} />
           </div>
-          <div
-            className={`mx-auto max-w-screen-md mt-7 py-2 px-2.5 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400 ${formatBg()}`}
-          >
-            <HourlyForecast
-              tittle="HOURLY FORECAST"
-              items={weather.hourly}
-              units={units}
-              err={err}
-            />
-          </div>
-          <div
-            className={`mx-auto max-w-screen-md mt-7 py-2 px-2.5 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400 ${formatBg()}`}
-          >
-            <DailyForecast
-              tittle="7 daily FORECAST"
-              items={weather.daily}
-              units={units}
-            />
-          </div>
+          {!isDetailOn ? (
+            <>
+              <div
+                className={`mx-auto max-w-screen-md mt-7 py-2 px-2.5 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400 ${formatBg()}`}
+              >
+                <HourlyForecast
+                  tittle="HOURLY FORECAST"
+                  items={weather.hourly}
+                  units={units}
+                  err={err}
+                />
+              </div>
+              <div
+                className={`mx-auto max-w-screen-md mt-7 py-2 px-2.5 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400 ${formatBg()}`}
+              >
+                <DailyForecast
+                  tittle="7 daily FORECAST"
+                  items={weather.daily}
+                  units={units}
+                />
+              </div>
+            </>
+          ) : null}
         </>
       )}
     </>
