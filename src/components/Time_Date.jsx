@@ -32,12 +32,10 @@ const Time_Date = ({
       <div className="flex items-center justify-center my-3">
         {!geoLocApiErr ? (
           <p className="text-3xl font-medium text-white">
-            {!err
-              ? `${name}, ${country}`
-              : "Location not found or wrong city name"}
+            {!err ? `${name}, ${country}` : "Location not found"}
           </p>
         ) : (
-          <p className="text-3xl font-bold text-red-400">
+          <p className="text-2xl font-bold text-red-400">
             User denied location access
           </p>
         )}

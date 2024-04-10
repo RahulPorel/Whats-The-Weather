@@ -1,7 +1,8 @@
-import { UilSearch, UilLocationPoint } from "@iconscout/react-unicons";
-import { useState } from "react";
+import { UilLocationPoint, UilSearch } from "@iconscout/react-unicons";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
+import { useState } from "react";
+import { toast } from "react-toastify";
 const Inputs = ({
   query,
   setQuery,
@@ -20,6 +21,7 @@ const Inputs = ({
 
   const handleLocationBtn = () => {
     if (navigator.geolocation) {
+      toast.info("Fetching users location.");
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const lat = position.coords.latitude;
@@ -32,6 +34,7 @@ const Inputs = ({
         },
         (error) => {
           setGeoLocApiErr(true);
+          toast.error("User denied location permission");
           switch (error.code) {
             case error.PERMISSION_DENIED:
               console.log("User denied the request for Geolocation.");
@@ -51,7 +54,7 @@ const Inputs = ({
         }
       );
     } else {
-      console.log("Geolocation is not supported by this browser.");
+      console.log("Geolocation is not supported by this browser.")
     }
   };
 
@@ -59,7 +62,7 @@ const Inputs = ({
     const selectedUnits = e.currentTarget.name;
     if (units !== selectedUnits) setUnits(selectedUnits);
   };
-  const label = { inputProps: { "aria-label": "Switch demo" } };
+
   return (
     <div
       className="flex 

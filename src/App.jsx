@@ -7,6 +7,8 @@ import getFormattedWeatherData from "./services/WeatherServices";
 import { useEffect, useState } from "react";
 import Inputs from "./components/Inputs/Inputs";
 import BookmarkLocation from "./components/BookmarkLocations/BookmarkLocation";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 function App() {
@@ -16,6 +18,7 @@ function App() {
   const [err, setErr] = useState(null);
   const [geoLocApiErr, setGeoLocApiErr] = useState(null);
   const [bookmarks, setBookmarks] = useState([]);
+  const [isDetailOn, setisDetailOn] = useState(false);
   const [isBookmarkOn, setIsBookmarkOn] = useState(false);
   const handleBookmarkToggle = () => {
     setIsBookmarkOn(!isBookmarkOn);
@@ -23,12 +26,18 @@ function App() {
 
   useEffect(() => {
     const fetchWeather = async () => {
+      const msg = query.q ? query.q : "current location.";
+      toast.info(`Fetching weather for ${msg}`);
       await getFormattedWeatherData({ ...query, units })
         .then((data) => {
+          // toast.success(
+          //   `Successfully fetched weather for ${data.name}, ${data.country}.`
+          // );
           setWeather(data);
           setErr(false);
         })
         .catch((error) => {
+          toast.error(`Error while fetching data.`);
           console.log(`Error fetching data ${error}`);
           setErr(true);
         });
@@ -54,11 +63,11 @@ function App() {
     if (weather.temp <= threshold) return " from-cyan-700 to-blue-700 ";
     return "from-yellow-700 to-orange-700";
   };
-  const [isDetailOn, setisDetailOn] = useState(false);
 
   const handleIsDetailToggle = () => {
     setisDetailOn(!isDetailOn);
   };
+  
   return (
     <>
       <Inputs
@@ -135,6 +144,11 @@ function App() {
               </div>
             </>
           ) : null}
+          <ToastContainer
+            autoClose={3000}
+            theme="colored "
+            newestOnTop={true}
+          />
         </>
       )}
     </>
