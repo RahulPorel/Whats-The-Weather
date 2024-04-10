@@ -45,6 +45,13 @@ function App() {
     setBookmarks(newBookmark);
   };
 
+  const formatBg = () => {
+    if (!weather) return " from-cyan-700 to-blue-700 ";
+    const threshold = units == "metric" ? 20 : 60;
+    if (weather.temp <= threshold) return " from-cyan-700 to-blue-700 ";
+    return "from-yellow-700 to-orange-700";
+  };
+
   return (
     <>
       <Inputs
@@ -74,7 +81,7 @@ function App() {
         />
       </div>
 
-      <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br form-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
+      <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br to-blue-700 h-fit shadow-xl shadow-gray-400">
         <TopBtns
           setQuery={setQuery}
           units={units}
@@ -85,7 +92,12 @@ function App() {
 
       {weather && (
         <>
-          <div className="mx-auto max-w-screen-md mt-7 py-2 px-2.5 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
+          <div
+            className={`mx-auto max-w-screen-md mt-7 py-2 px-2.5 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400 ${formatBg()}`}
+
+            // className="mx-auto max-w-screen-md mt-7 py-2 px-2.5 bg-gradient-to-br from-cyan-700
+            //  to-blue-700 h-fit shadow-xl shadow-gray-400"
+          >
             <Time_Date
               weather={weather}
               err={err}
