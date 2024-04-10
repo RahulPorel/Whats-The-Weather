@@ -1,12 +1,5 @@
-## What's The Weather
 
-# Description
 
-# Features
-
-# Live Demo 👁️
-
-https://whats-the-weather-rahul.netlify.app/
 
 # Snapshot of What's The Weather
 
@@ -35,4 +28,84 @@ https://whats-the-weather-rahul.netlify.app/
 
 ```npm
  npm run build
+
 ```
+
+# Weather App
+
+Welcome to the What's the Weather App! This application provides users with detailed weather forecasts for their current location or any location of interest and also this app offers various features to enhance the user experience.
+
+# Live Demo 👁️
+
+https://whats-the-weather-rahul.netlify.app/
+
+# Features
+
+- Location Bookmark Widget
+
+Users can bookmark their favorite locations for quick access to weather forecasts.
+
+- Celsius to Fahrenheit Converter
+
+Easily convert temperature units from Celsius to Fahrenheit and vice versa.
+
+- Search Functionality
+
+The app offers a search feature with autocomplete, allowing users to quickly find weather information for any location.
+
+- Basic and Detail Modes
+
+Choose between basic and detail modes to view weather forecasts. In basic mode, only essential information is displayed, while detail mode provides a comprehensive overview including hourly and daily forecasts.
+
+- Quick City Search Widget
+
+Every time the page refreshes or a button is clicked, a new city is displayed in the quick city search widget. Users can click on these cities to view weather details instantly.
+
+- Bookmark Toggle
+
+Toggle the bookmark feature on or off to manage saved locations easily.
+
+- Hourly and Daily Forecast
+
+The app provides users with both hourly and daily weather forecasts to help plan activities accordingly.
+
+#### Many more features will be added to this build in future
+
+## Installation
+
+To run the Weather App locally, follow these steps:
+
+1. Clone this repository.
+2. Navigate to the project directory.
+3. Run `npm install` to install dependencies.
+4. Run `npm start` to start the development server.
+5. Open your browser and visit `http://localhost:3000`.
+
+## Usage
+
+Once the app is running, users can:
+
+- Search for locations using the search bar.
+- Bookmark favorite locations.
+- Toggle between basic and detail modes for weather forecasts.
+- Convert temperature units.
+- Explore hourly and daily weather forecasts.
+- Click on quick city search options for instant weather details.
+
+## Contributing
+
+Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/new-feature`).
+3. Make your changes.
+4. Commit your changes (`git commit -am 'Add new feature'`).
+5. Push to the branch (`git push origin feature/new-feature`).
+6. Create a new Pull Request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
