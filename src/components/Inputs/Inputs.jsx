@@ -201,6 +201,7 @@ const Inputs = ({
   const [city, setCity] = useState("");
   const [displayedCities, setDisplayedCities] = useState(5);
   let [isSearchSelected, setIsSearchSelected] = useState(false);
+  const [rmLoadMore, setRmLoadMore] = useState(null);
 
   useEffect(() => {
     if (city.length >= 1) {
@@ -266,6 +267,8 @@ const Inputs = ({
 
   const onSearch = (searchTerm) => {
     setCity(searchTerm);
+    setRmLoadMore(true);
+    setIsSearchSelected(true);
   };
 
   const loadMoreCities = () => {
