@@ -1,6 +1,5 @@
 import { UilSearch, UilLocationPoint } from "@iconscout/react-unicons";
 import { useState } from "react";
-
 const Inputs = ({
   query,
   setQuery,
@@ -56,7 +55,7 @@ const Inputs = ({
     const selectedUnits = e.currentTarget.name;
     if (units !== selectedUnits) setUnits(selectedUnits);
   };
-
+  const label = { inputProps: { "aria-label": "Switch demo" } };
   return (
     <div
       className="flex 
@@ -83,11 +82,9 @@ const Inputs = ({
           onClick={handleLocationBtn}
           className="text-white  cursor-pointer transition ease-out hover:scale-125"
         />
-        {/* <UisBookmark
-          size={30}
-          className="text-white cursor-pointer transition ease-out hover:scale-125"
-        /> */}
-        <button onClick={handleAddBookmarkLocation} className=" text-white">
+        <button onClick={handleAddBookmarkLocation} className="  text-white">
+          {" "}
+          Add
           <i className="fa-regular fa-bookmark text-white "></i>
         </button>{" "}
       </div>

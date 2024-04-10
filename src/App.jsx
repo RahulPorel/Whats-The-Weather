@@ -1,14 +1,13 @@
 import Time_Date from "./components/Time_Date";
 import TopBtns from "./components/TopBtns/TopBtns";
-import "./App.css";
 import TempDetails from "./components/TempDetails";
-
 import HourlyForecast from "./components/HourlyForecast";
 import DailyForecast from "./components/DailyForecast";
 import getFormattedWeatherData from "./services/WeatherServices";
 import { useEffect, useState } from "react";
 import Inputs from "./components/Inputs/Inputs";
 import BookmarkLocation from "./components/BookmarkLocations/BookmarkLocation";
+import "./App.css";
 
 function App() {
   const [query, setQuery] = useState({ q: "Kolkata" });
@@ -17,12 +16,16 @@ function App() {
   const [err, setErr] = useState(null);
   const [geoLocApiErr, setGeoLocApiErr] = useState(null);
   const [bookmarks, setBookmarks] = useState([]);
+  const [isBookmarkOn, setIsBookmarkOn] = useState(false);
+  const handleBookmarkToggle = () => {
+    setIsBookmarkOn(!isBookmarkOn);
+  };
 
   useEffect(() => {
     const fetchWeather = async () => {
       await getFormattedWeatherData({ ...query, units })
         .then((data) => {
-          setWeather(data); // temporialy studown api
+          setWeather(data);
           setErr(false);
         })
         .catch((error) => {
@@ -62,24 +65,23 @@ function App() {
         geoLocApiErr={geoLocApiErr}
         handleAddBookmarkLocation={handleAddBookmarkLocation}
       />
+      {isBookmarkOn ? (
+        <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br to-blue-700 h-fit shadow-xl shadow-gray-400">
+          <div className="container flex justify-between">
+            <h2 className=" flex justify-center">Your Saved Bookmarks</h2>
+            <span className="flex text-start">Click to view</span>{" "}
+            <span className="flex text-start">DB Click to remove</span>
+          </div>
 
-      <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br to-blue-700 h-fit shadow-xl shadow-gray-400">
-        <div className="container flex justify-between">
-          <h2 className=" flex justify-center">Your Bookmarks</h2>
-          <span className="flex text-start">
-            Double Click to delete location
-          </span>
-          <span className="flex text-start">Single Click to view location</span>{" "}
+          <hr className="my-2 text-black" />
+          <BookmarkLocation
+            handleDelBookmark={handleDelBookmark}
+            bookmarks={bookmarks}
+            setBookmarks={setBookmarks}
+            setQuery={setQuery}
+          />
         </div>
-
-        <hr className="my-2 text-black" />
-        <BookmarkLocation
-          handleDelBookmark={handleDelBookmark}
-          bookmarks={bookmarks}
-          setBookmarks={setBookmarks}
-          setQuery={setQuery}
-        />
-      </div>
+      ) : null}
 
       <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br to-blue-700 h-fit shadow-xl shadow-gray-400">
         <TopBtns
@@ -94,18 +96,19 @@ function App() {
         <>
           <div
             className={`mx-auto max-w-screen-md mt-7 py-2 px-2.5 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400 ${formatBg()}`}
-
-            // className="mx-auto max-w-screen-md mt-7 py-2 px-2.5 bg-gradient-to-br from-cyan-700
-            //  to-blue-700 h-fit shadow-xl shadow-gray-400"
           >
             <Time_Date
+              isBookmarkOn={isBookmarkOn}
+              handleBookmarkToggle={handleBookmarkToggle}
               weather={weather}
               err={err}
               geoLocApiErr={geoLocApiErr}
             />
             <TempDetails weather={weather} units={units} err={err} />
           </div>
-          <div className="mx-auto max-w-screen-md mt-4 py-5 px-20 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
+          <div
+            className={`mx-auto max-w-screen-md mt-7 py-2 px-2.5 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400 ${formatBg()}`}
+          >
             <HourlyForecast
               tittle="HOURLY FORECAST"
               items={weather.hourly}
@@ -113,7 +116,9 @@ function App() {
               err={err}
             />
           </div>
-          <div className="mx-auto max-w-screen-md mt-4 py-5 px-20 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
+          <div
+            className={`mx-auto max-w-screen-md mt-7 py-2 px-2.5 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400 ${formatBg()}`}
+          >
             <DailyForecast
               tittle="7 daily FORECAST"
               items={weather.daily}
